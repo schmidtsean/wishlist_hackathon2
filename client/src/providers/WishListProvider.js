@@ -1,29 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 export const WishlistContext = React.createContext();
 
 export const WishlistConsumer = WishlistContext.Consumer;
 
+const userId = ( User.all )
+
 const WishlistProvider = ({ children }) => {
   const [wishlists, setWishlists] = useState([])
+ 
 
-  useEffect( () => {
-    axios.get('/api/users/${match.params.id**')
-      .then( res => setWishlists(res.data))
-      .catch( err => console.log(err))
-  }, [])
 
-  const addWishlist = (wishlist) => {
-    axios.post('/api/users/', { wishlist })
+  const addWishlist = (wishlist, userId) => {
+    axios.post(`/api/users/${userId}/wishlist`, { wishlist })
       .then( res => {
         setWishlists([...wishlists, res.data])
       })
       .catch( err => console.log(err))
   }
 
-  const updateWishlist = (id, wishlist, user) => {
-    axios.put(`/api/users/${user.id}/wishes/`, { wishlist })
+  const updateWishlist = (id, wishlist, userId) => {
+    axios.put(`/api/users/${userId}/wishlist/`, { wishlist })
       .then(res => {
         const updatedWishlists = wishlists.map( t => {
           if (t.id === id) {
