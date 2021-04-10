@@ -1,47 +1,42 @@
 class Api::CategoriesController < ApplicationController
   def index
-    render json: Categorie.all
+    render json: Category.all
   end
-  
   
   def show
-    @categorie = Categorie.find(params[:id])
-    render json: @categorie
+    @category = Category.find(params[:id])
+    render json: @category
   end
  
-  
-
-  
   def create
-    @categorie = Categorie.new(categorie_params)
-    if @categorie.save
-      render json: @categorie
+    @category = Category.new(category_params)
+    if @category.save
+      render json: @category
     else
-      render json: { errors: categorie.errors }, status: :unprocessable_entity
+      render json: { errors: category.errors }, status: :unprocessable_entity
     end
   end
   
   
-  
   def update
-    @categorie = Categorie.find(params[:id])
-    if @categorie.update(categorie_params)
-      render json: @categorie
+    @category = Category.find(params[:id])
+    if @category.update(category_params)
+      render json: @category
     else
-      render json: { errors: @categorie.errors }, status: :unprocessable_entity
+      render json: { errors: @category.errors }, status: :unprocessable_entity
     end
   end
   
   
   def destroy
-    Categorie.find(params[:id]).destroy
-    @categorie.destroy
+    Category.find(params[:id]).destroy
+    @category.destroy
     render json: { message: ' deleted' }
   end
   
   private
-    def model_name_params
-      params.require(:categorie).permit(:genre, :img)
+    def category_params
+      params.require(:category).permit(:genre, :img)
     end
  
 end
