@@ -21,6 +21,7 @@ const CategoryForm = ({ addCategory }) => {
         required
       />
       
+      
       <Form.Button>Save</Form.Button>
     </Form>
   )

@@ -1,57 +1,57 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export const CategoryContext = React.createContext();
+export const WishlistContext = React.createContext();
 
-export const CategoryConsumer = CategoryContext.Consumer;
+export const WishlistConsumer = WishlistContext.Consumer;
 
-const CategoryProvider = ({ children }) => {
-  const [category, setcategory] = useState([])
+const WishlistProvider = ({ children }) => {
+  const [wishlists, setWishlists] = useState([])
 
   useEffect( () => {
-    axios.get('/api/category')
-      .then( res => setCategories(res.data))
+    axios.get('/api/users/${match.params.id**')
+      .then( res => setWishlists(res.data))
       .catch( err => console.log(err))
   }, [])
 
-  const addCategory = (category) => {
-    axios.post('/api/categories', { category })
+  const addWishlist = (wishlist) => {
+    axios.post('/api/users/***/wishlist', { wish })
       .then( res => {
-        setTacos([...categories, res.data])
+        setWishlists([...wishlists, res.data])
       })
       .catch( err => console.log(err))
   }
 
-  const updateCategory = (id, category) => {
-    axios.put(`/api/categories/${id}`, { category })
+  const updateWishlist = (id, wishlist) => {
+    axios.put(`/api/users/${id}/wishes`, { wishlist })
       .then(res => {
-        const updatedCategories = categories.map( c => {
-          if (children.id === id) {
+        const updatedWishlists = wishlists.map( t => {
+          if (t.id === id) {
             return res.data
           }
-          return c
+          return t
         })
-        setCategories(updatedCategories)
+        setWishlists(updatedWishlists)
       })
   }
 
-  const deleteCategory = (id) => {
-    axios.delete(`/api/categories/${id}`)
+  const deleteWishlist = (id) => {
+    axios.delete(`/api/users/${user.id}/wishlists/${id}`)
       .then( res => {
-        setTacos(categories.filter(c => c.id !== id))
+        setWishlists(wishlists.filter(t => t.id !== id))
       })
   }
 
   return(
-    <CategoryContext.Provider value={{
-      categories,
-      addCategory: addCategory,
-      updateCategory: updateCategory,
-      deleteCategory: deleteCategory,
+    <WishlistContext.Provider value={{
+      wishlists,
+      addWishlist: addWishlist,
+      updateWishlist: updateWishlist,
+      deleteWishlist: deleteWishlist,
     }}>
       { children }
-    </CategoryContext.Provider>
+    </WishlistContext.Provider>
   )
 }
 
-export default CategoryProvider;
+export default WishlistProvider;

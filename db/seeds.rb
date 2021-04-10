@@ -9,22 +9,23 @@
   wishlist = Wishlist.create(
   name: Faker::Name.name,  
   description: Faker::Lorem.sentence,
-)
+  )
 
-  # 2.times do 
-  #   category = Category.create(
-  #     genre: Faker::FunnyName.name,
-  #     img: Faker::Avatar.image,
+  2.times do 
+    category = Category.create(
+      genre: Faker::FunnyName.name,
+      img: Faker::Avatar.image,
       
-  #   )
+    )
 
-    # 2.times do
-    #   item = User.item.create(
-    #     name: Faker::Device.model_name ,
-    #     price: Faker::Commerce.price(range: 0..10.0, as_string: true),
-    #   )
-    # end
-  # end
-# end
+    2.times do
+      
+      Item.create(
+        name: Faker::Device.model_name ,
+        price: Faker::Commerce.price(range: 0..10.0, as_string: true),
+      )
+    end
+  end
+end
 
 puts "Data Seeded."

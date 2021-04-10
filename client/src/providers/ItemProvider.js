@@ -8,35 +8,35 @@ export const ItemConsumer = ItemContext.Consumer;
 const ItemProvider = ({ children }) => {
   const [items, setItems] = useState([])
 
-  useEffect( () => {
-    axios.get('/api/users/${match.params.id**')
-      .then( res => setItemss(res.data))
+  useEffect( (category_id) => {
+    axios.get(`/api/categories/${category_id}/items`)
+      .then( res => setItems(res.data))
       .catch( err => console.log(err))
   }, [])
 
-  const addItem = (item) => {
-    axios.post('/api/users/***/wishlist', { item })
+  const addItem = (item, wishlist_id) => {
+    axios.post(`/api/wishlist/${wishlist_id}/items`, { item })
       .then( res => {
         setItems([...items, res.data])
       })
       .catch( err => console.log(err))
   }
 
-  const updateItem = (id, item) => {
-    axios.put(`/api/users/${id}/wishes`, { item })
+  const updateItem = (id, category_id, item) => {
+    axios.put(`/api/categories/${category_id}/items/${id}`, { item })
       .then(res => {
-        const updatedItems = items.map( t => {
-          if (t.id === id) {
+        const updatedItems = items.map( i => {
+          if (i.id === id) {
             return res.data
           }
-          return t
+          return i
         })
         setItems(updatedItems)
       })
   }
 
-  const deleteItem = (id) => {
-    axios.delete(`/api/users/${user.id}/items/${id}`)
+  const deleteItem = (id, category_id) => {
+    axios.delete(`/api/categories/${category_id}/items/${id}`)
       .then( res => {
         setItems(items.filter(t => t.id !== id))
       })

@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { Form } from 'semantic-ui-react';
 import { ItemConsumer } from '../../providers/ItemProvider';
 
-const ItemForm = ({ additem }) => {
+const ItemForm = ({ addItem }) => {
   const [item, setItem] = useState({ name: "", description: "", user_id: ""})
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    addItem(itemlist)
+    addItem(item)
     setItem({ name: "", description: "", user_id: ""})
   }
   return(
