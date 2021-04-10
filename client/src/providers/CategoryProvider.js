@@ -38,7 +38,7 @@ const CategoryProvider = ({ children }) => {
   const deleteCategory = (id) => {
     axios.delete(`/api/categories/${id}`)
       .then( res => {
-        setTacos(categories.filter(c => c.id !== id))
+        setCategories(categories.filter(c => c.id !== id))
       })
   }
 
