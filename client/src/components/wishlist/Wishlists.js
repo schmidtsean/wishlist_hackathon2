@@ -1,10 +1,10 @@
 import WishlistForm from './WishlistForm'
 
-const Wishes = () => (
+const Wishlists = () => (
 <>
 <h1>Wishes</h1>
 <WishlistForm/>
 </>
 
 )
-export default Wishlist
+export default Wishlists

@@ -1,9 +1,9 @@
-import WishesForm from './WishesForm'
+import CategoryForm from './CategoryForm'
 
 const Categories = () => (
 <>
 <h1>Categories</h1>
-<CategoriesForm/>
+<CategoryForm/>
 </>
 
 )

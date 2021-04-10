@@ -6,14 +6,20 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
 import AuthProvider from './providers/AuthProvider';
+import CategoryProvider from './providers/CategoryProvider';
+import WishlistProvider from './providers/WishlistProvider';
 import { initMiddleware } from 'devise-axios';
 initMiddleware();
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
-      <BrowserRouter>
-        <App />   
-      </BrowserRouter>
+      <CategoryProvider>
+        <WishlistProvider>
+        <BrowserRouter>
+          <App />   
+        </BrowserRouter>
+        </WishlistProvider>
+      </CategoryProvider>
     </AuthProvider>
   </React.StrictMode>,
   document.getElementById('root')

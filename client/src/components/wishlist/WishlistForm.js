@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Form } from 'semantic-ui-react';
-import { WishlistConsumer } from '../../providers/WishProvider';
+import { WishlistConsumer } from '../../providers/WishlistProvider';
 
-const WishlistForm = ({ addwishlist }) => {
+
+const WishlistForm = ({ addWishlist }) => {
   const [wishlist, setWishlist] = useState({ name: "", description: "", user_id: ""})
 
   const handleSubmit = (e) => {
@@ -39,4 +40,4 @@ const ConnectedWishlistForm = (props) => (
   </WishlistConsumer>
 )
 
-export default ConnectedWishForm;
+export default ConnectedWishlistForm;
