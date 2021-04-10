@@ -54,10 +54,29 @@ const Navbar = ({ location, user, handleLogout, history }) => {
                 active={location.pathname === '/category'}
               />
             </Link>
+            <Link to='/items'>
+              <Menu.Item
+                name='items'
+                id='items'
+                active={location.pathname === '/items'}
+              />
+            </Link>
+            <Link to='/wishlist'>
+              <Menu.Item
+                name='Wishlist'
+                id='wishlist'
+                active={location.pathname === '/wishlist'}
+              />
+            </Link>
         { rightNavItem() }
       </Menu>
     </>
   )
+
+
+
+
+  
 }
 const ConnectedNavbar = (props) => (
   <AuthConsumer>

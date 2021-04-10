@@ -30,7 +30,7 @@ const CategoryProvider = ({ children }) => {
             return res.data
           }
           return c
-        })
+        }, [])
         setCategories(updatedCategories)
       })
   }

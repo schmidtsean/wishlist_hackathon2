@@ -1,42 +1,57 @@
-import { useState } from 'react';
-import { Form } from 'semantic-ui-react';
-import { WishlistConsumer } from '../../providers/WishProvider';
+import { Component } from "react";
+import { Button, Form } from "semantic-ui-react";
 
-const WishlistForm = ({ addwishlist }) => {
-  const [wishlist, setWishlist] = useState({ name: "", description: "", user_id: ""})
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    addWishlist(wishlist)
-    setWishlist({ name: "", description: "", user_id: ""})
+class WishlistForm extends Component {
+  state = { name: "", description: ""};
+
+  componentDidMount() {
+    if (this.props.id) {
+      const { id, name, description } = this.props;
+      this.setState({ id, name, description });
+    }
   }
-  return(
-    <Form onSubmit={handleSubmit}>
-      <Form.Input
-        label='Name'
-        name='name'
-        value={wishlist.name}
-        onChange={(e, {value}) => setWishlist({...wishlist, name: value})}
-        required
-        />
+
+  handleChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    if (this.props.id) {
+      const { updateWishlist, id, toggleForm } = this.props;
+      updateWishlist(id, this.state);
+      toggleForm();
+    } else {
+      this.props.addWishlist(this.state);
+    }
+    this.setState({ name: "", description: "" });
+  };
+  render() {
+    const { name, description } = this.state;
+    return (
+      <Form onSubmit={this.handleSubmit}>
         <Form.Input
-        label='Description'
-        name='description'
-        value={wishlist.description}
-        onChange={(e, {value}) => setWishlist({...wishlist, description: value})}
-        required
+          type="text"
+          name="name"
+          value={name}
+          onChange={this.handleChange}
+          required
+          placeholder="Name"
         />
-    <Form.Button>Save</Form.Button>
-    </Form>
-  )
+        <Form.TextArea
+          type="text"
+          name="body"
+          value={description}
+          onChange={this.handleChange}
+          required
+          placeholder="Text"
+        />
+        
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+  }
 }
-
-const ConnectedWishlistForm = (props) => (
-  <WishlistConsumer>
-    { value => (
-      <WishlistForm {...props} {...value} />
-    )}
-  </WishlistConsumer>
-)
-
-export default ConnectedWishForm;
+export default WishlistForm;
