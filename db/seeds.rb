@@ -8,7 +8,8 @@
 2.times do
   wishlist = Wishlist.create(
   name: Faker::Name.name,  
-  description: Faker::Lorem.sentence
+  description: Faker::Lorem.sentence,
+  user_id: 1
   )
 
   2.times do 
@@ -22,8 +23,10 @@
       
       Item.create(
         name: Faker::Device.model_name ,
-        price: Faker::Commerce.price(range: 0..10.0, as_string: true)
-        category_id: category.id
+        price: Faker::Commerce.price(range: 0..10.0, as_string: true),
+        category_id: 1,
+        wishlist_id: 1
+
       )
     end
   end

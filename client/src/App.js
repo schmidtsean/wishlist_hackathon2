@@ -8,6 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import Home from './components/shared/Home';
 import Category from './components/categories/Categories';
 import Item from './components/items/Items';
+import Wishlist from './components/wishlist/Wishlist';
 import FetchUser from './components/auth/FetchUser';
 const App = () => (
   <>
@@ -17,8 +18,9 @@ const App = () => (
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/home" component={Home} />
-        <Route exact path="/category" component={Category} />
-        {/* <Route exact path="/categories/:category_id/items" component={Item} /> */}
+        <ProtectedRoute exact path="/category" component={Category} />
+        <ProtectedRoute exact path="/items" component={Item} />
+        <ProtectedRoute exact path="/wishlist" component={Wishlist} />  
         <Route exact path="/categories/:id" component={Category} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/register' component={Register} />

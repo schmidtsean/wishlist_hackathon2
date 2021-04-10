@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Form } from 'semantic-ui-react';
 import { CategoryConsumer } from '../../providers/CategoryProvider';
-
+import { catogories } from './Categories'
 const CategoryForm = ({ addCategory }) => {
   const [category, setCategory] = useState({ genre: "" })
 
@@ -21,8 +21,9 @@ const CategoryForm = ({ addCategory }) => {
         required
       />
       
-      
+     
       <Form.Button>Save</Form.Button>
+      
     </Form>
   )
 }

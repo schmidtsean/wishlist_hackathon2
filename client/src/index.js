@@ -13,13 +13,13 @@ initMiddleware();
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
-      
+      <CategoryProvider>
         <ItemProvider> 
           <BrowserRouter>
             <App />   
           </BrowserRouter>
         </ItemProvider> 
-     
+      </CategoryProvider>
     </AuthProvider>
   </React.StrictMode>,
   document.getElementById('root')

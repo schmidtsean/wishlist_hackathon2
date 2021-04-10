@@ -4,6 +4,7 @@ import { Card, Icon, Button, Image } from "semantic-ui-react";
 import { Spacing } from '../styledComponents/categoryStyles';
 import { Link } from "react-router-dom";
 import Categories from "./Categories";
+import Wishlists from "../wishlist/Wishlists";
 import axios from "axios";
 
 class Category extends Component {
@@ -47,7 +48,7 @@ class Category extends Component {
             )}
             <br />
             
-            
+            {/* <Wishlists itemId={id} /> */}
           </Card.Content>
         </Card>
       </Spacing>

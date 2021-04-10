@@ -30,6 +30,6 @@ class Api::WishlistsController < ApplicationController
 
   private 
     def wishlist_params
-      params.require(:wishlist).permit(:name :description)
+      params.require(:wishlist).permit(:name, :description)
     end
 end

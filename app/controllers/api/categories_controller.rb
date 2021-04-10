@@ -5,7 +5,6 @@ class Api::CategoriesController < ApplicationController
   end
   
   def show
-    @category = Category.find(params[:id])
     render json: @category
   end
  
@@ -30,19 +29,16 @@ class Api::CategoriesController < ApplicationController
   
   
   def destroy
-   
     @category.destroy
     render json: { message: ' deleted' }
   end
   
   private
-
-    def set_category
-      @category = Category.find(params[:category_id])
-    end
-
     def category_params
       params.require(:category).permit(:genre, :img)
     end
 
+    def set_category
+      @category = Category.find(params[:id])
+    end
 end

@@ -1,5 +1,6 @@
 class Api::ItemsController < ApplicationController
   before_action :set_category
+  before_action :set_item, except: [:index, :create]
   
   def index
     render json: Item.all
@@ -11,7 +12,7 @@ class Api::ItemsController < ApplicationController
   end
  
   def create
-    @item = Item.new(item_params)
+    @item = @category.items.new(item_params)
     if @item.save
       render json: @item
     else
@@ -31,7 +32,7 @@ class Api::ItemsController < ApplicationController
   
   
   def destroy
-    Item.find(params[:id]).destroy
+    
     @item.destroy
     render json: { message: ' deleted' }
   end
@@ -39,6 +40,10 @@ class Api::ItemsController < ApplicationController
   private
     def item_params
       params.require(:item).permit(:name, :price)
+    end
+
+    def set_item
+      @item = @Category.items.find(params[:id])
     end
     
     def set_category
