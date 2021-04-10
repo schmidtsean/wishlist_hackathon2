@@ -33,20 +33,15 @@ class Api::CategoriesController < ApplicationController
   end
   
   
-  
- 
-  
   def destroy
     Categorie.find(params[:id]).destroy
     @categorie.destroy
     render json: { message: ' deleted' }
   end
-
-  
   
   private
     def model_name_params
-      params.require(:categorie).permit(:genre, )
+      params.require(:categorie).permit(:genre, :img)
     end
  
 end
