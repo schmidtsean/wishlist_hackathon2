@@ -1,5 +1,5 @@
 class Api::CategoriesController < ApplicationController
-  before_action :set_category, only: 
+  before_action :set_category, only: [:update, :show, :destroy]
   def index
     render json: Category.all
   end
@@ -30,7 +30,7 @@ class Api::CategoriesController < ApplicationController
   
   
   def destroy
-    Category.find(params[:id]).destroy
+   
     @category.destroy
     render json: { message: ' deleted' }
   end

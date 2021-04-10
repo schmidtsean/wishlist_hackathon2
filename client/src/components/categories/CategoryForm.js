@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Form } from 'semantic-ui-react';
 import { CategoryConsumer } from '../../providers/CategoryProvider';
-// import { Fillings, Kinds, Toppings, Sauces } from './TacoOpts';
+
 const CategoryForm = ({ addCategory }) => {
   const [category, setCategory] = useState({ genre: "" })
 
