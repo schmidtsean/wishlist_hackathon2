@@ -7,15 +7,18 @@ import { BrowserRouter } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
 import AuthProvider from './providers/AuthProvider';
 import CategoryProvider from './providers/CategoryProvider';
+import ItemProvider from './providers/ItemProvider';
 import { initMiddleware } from 'devise-axios';
 initMiddleware();
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
       <CategoryProvider>
-        <BrowserRouter>
-          <App />   
-        </BrowserRouter>
+        <ItemProvider> 
+          <BrowserRouter>
+            <App />   
+          </BrowserRouter>
+        </ItemProvider> 
       </CategoryProvider>
     </AuthProvider>
   </React.StrictMode>,

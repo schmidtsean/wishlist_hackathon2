@@ -1,4 +1,5 @@
 class Api::CategoriesController < ApplicationController
+  before_action :set_category, only: 
   def index
     render json: Category.all
   end
@@ -35,8 +36,13 @@ class Api::CategoriesController < ApplicationController
   end
   
   private
+
+    def set_category
+      @category = Category.find(params[:category_id])
+    end
+
     def category_params
       params.require(:category).permit(:genre, :img)
     end
- 
+
 end

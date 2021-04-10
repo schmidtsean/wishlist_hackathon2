@@ -1,4 +1,6 @@
 class Api::ItemsController < ApplicationController
+  before_action :set_category
+  
   def index
     render json: Item.all
   end
@@ -38,5 +40,8 @@ class Api::ItemsController < ApplicationController
     def item_params
       params.require(:item).permit(:name, :price)
     end
- 
+    
+    def set_category
+      @category = Category.find(params[:category_id])
+    end
 end
